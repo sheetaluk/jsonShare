@@ -1,0 +1,47 @@
+{
+  "name": "json-share",
+  "version": "0.0.1",
+  "description": "Json Share Tool",
+  "main": "gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sheetaluk/jsonShare.git"
+  },
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "~0.8.2",
+    "handlebars": "~1.1.2"
+  },
+  "devDependencies": {
+    "grunt-exec": "0.4",
+    "grunt-contrib-copy": "0.4",
+    "grunt-contrib-concat": "~0.3.0",
+    "stitch-manifest-gen": "*",
+    "grunt-contrib-less": "~0.8.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-cache-bust": "~0.1.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-karma": "~0.6.2",
+    "mocha": "~1.13.0",
+    "karma-mocha": "~0.1.0",
+    "phantomjs": "~1.9.2-1",
+    "karma-sinon": "~1.0.0",
+    "karma-chai": "0.0.2",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-ng-scenario": "~0.1.0",
+    "karma-spec-reporter": "0.0.5",
+    "karma": "~0.10.4",
+    "grunt-contrib-jshint": "~0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json"
+  ],
+  "author": "@sheetaluk",
+  "license": "BSD",
+  "gitHead": "782380e1daf04f3b94668cee245c3710ef6c74f9"
+}
