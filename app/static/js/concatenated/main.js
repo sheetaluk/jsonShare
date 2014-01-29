@@ -21559,10 +21559,10 @@ function ngViewFactory(   $route,   $anchorScroll,   $compile,   $controller,   
     'use strict';
 
     $routeProvider.when('/Json/:jsonId', {
-      templateUrl: '/views/jsons/json.html',
+      templateUrl: '/static/views/jsons/json.html',
         controller: 'JsonsController'
       }).when('/Json', {
-      templateUrl: '/views/jsons/json.html',
+      templateUrl: '/static/views/jsons/json.html',
         controller: 'JsonsController'
       }).otherwise({
         redirectTo: '/Json'

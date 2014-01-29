@@ -1,10 +1,20 @@
 from flask import render_template
+from flask import request
 from app import app
+import json
 
 @app.route('/')
 @app.route('/index')
 def index():
-    user = { 'nickname': 'Miguel' } # fake user
-    return render_template("index.html",
-        title = 'Home',
-        user = user)
+  return render_template("index.html")
+
+@app.route('/validateJson', methods=['POST'])
+def validateJson():
+  if request.method == "POST":
+    try:
+      data = json.loads(request.form['jsonString'])
+      return str(data)
+    except ValueError as ex:
+      return json.dumps({'error':'error', 'message':str(ex)})
+    
+    

@@ -63,7 +63,7 @@ module.exports = function (grunt) {
       },
       assets: {
         files: [{
-          src: ['index.html']
+          src: ['../templates/index.html']
         }]
       }
     },
