@@ -43,8 +43,8 @@
         <div id="warnings" class="alert alert-danger">
         </div>
         <div>
-          <div id="formatted-json">
-          <div>
+          <pre id="formatted-json">
+          </pre>
         </div>
       </div>
       <div ng-view>
@@ -55,6 +55,7 @@
     <script>
       $("#document").ready(function() {
         $("#warnings").hide();
+        $("#formatted-json").hide();
       });
 
       $('#validate-json').click(function() {
@@ -64,11 +65,12 @@
         }, function(data) {
           if (data.success) {
             $("#warnings").hide();
-            $("#formatted-json").html(JSON.stringify(JSON.parse(value)), null, 4);
+            $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
+            $("#formatted-json").show();
           } else {
             $("#warnings").html(data.message);
             $("#warnings").show();
-            $("#formatted-json").html("");
+            $("#formatted-json").hide();
           }
         }, "json");
       });
