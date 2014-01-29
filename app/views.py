@@ -13,7 +13,7 @@ def validateJson():
   if request.method == "POST":
     try:
       data = json.loads(request.form['jsonString'])
-      return str(data)
+      return json.dumps({'success':'success', 'message':str(data)})
     except ValueError as ex:
       return json.dumps({'error':'error', 'message':str(ex)})
     

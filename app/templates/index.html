@@ -62,11 +62,13 @@
         $.post('/validateJson', {
           'jsonString': value 
         }, function(data) {
-          if (data.hasOwnProperty('error')) {
+          if (data.success) {
+            $("#warnings").hide();
+            $("#formatted-json").html(JSON.stringify(JSON.parse(value)), null, 4);
+          } else {
             $("#warnings").html(data.message);
             $("#warnings").show();
-          } else {
-            $("#formatted-json").html(JSON.stringify(), null, 4);            
+            $("#formatted-json").html("");
           }
         }, "json");
       });
