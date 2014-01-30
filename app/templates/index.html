@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?234bec83989539b9">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?a3a71bb8ad899cc7">
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="navbar-header magneto-header">
-          <a class="navbar-brand magneto-brand-icon-title" href="#"></a>
+        <div class="navbar-header">
+          <h3 class="glyphicon glyphicon-share">
+            Validate and Share JSON
+          </h3>
           <ul class="nav-links pull-right">
-            <li class="active">
-              <a href="#/Json/"></a>
-            </li>
           </ul>
         </div>
       </div>
@@ -23,11 +22,14 @@
     <div class="container content-container">
       <div id="left-panel">
         <h3>
-          Input:
+          Input
         </h3>
         <hr />
+        <h4>
+          JSON
+        </h4>
         <label>
-          JSON String:
+          String:
         </label>
         <div>
           <textarea class="form-control" rows="10" id="input-json"></textarea>
@@ -37,11 +39,37 @@
           <input class="button btn btn-warning" type="button" id="clear-json" value="clear">
         </div>
         <hr />
+        <h4>
+          HTTP Response
+        </h4>
         <label>
-          HTTP Response:
+          Type:
+        </label>
+        <div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="getOption" checked>
+              Get
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="postOption">
+              Post
+            </label>
+          </div>
+        </div>
+        <label>
+          URL:
         </label>
         <div>
           <input class="form-control" type="text" id="input-json-url">
+        </div>
+        <label>
+          Header string:
+        </label>
+        <div>
+          <input class="form-control" type="text" id="input-json-headers">
         </div>
         <div>
           <input class="button btn btn-success" type="button" id="validate-json-url" value="validate">
@@ -50,7 +78,7 @@
       </div>
       <div id="right-panel">
         <h3>
-          Output:
+          Output
         </h3>
         <hr />
         <div id="warnings" class="alert alert-danger">
