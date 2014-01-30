@@ -21557,7 +21557,7 @@ function ngViewFactory(   $route,   $anchorScroll,   $compile,   $controller,   
 
   module.config(['$routeProvider', function($routeProvider) {
     'use strict';
-
+    /*
     $routeProvider.when('/Json/:jsonId', {
       templateUrl: '/static/views/jsons/json.html',
         controller: 'JsonsController'
@@ -21567,6 +21567,7 @@ function ngViewFactory(   $route,   $anchorScroll,   $compile,   $controller,   
       }).otherwise({
         redirectTo: '/Json'
       });
+    */
     }]);
 
     angular.module('JsonShare.controllers', ['JsonShare.services']);
