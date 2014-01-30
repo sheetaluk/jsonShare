@@ -15,7 +15,14 @@ body #right-panel {
 }
 body #input-json {
   width: 500px;
+  resize: none;
 }
 body #input-json-url {
   width: 500px;
+}
+body .button {
+  margin-top: 15px;
+}
+body label {
+  margin-bottom: 8px;
 }
