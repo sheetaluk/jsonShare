@@ -81,6 +81,9 @@
           Output
         </h3>
         <hr />
+        <div> 
+          <input class="form-control" type="text" id="output-json-url">
+        </div>
         <div id="warnings" class="alert alert-danger">
         </div>
         <div>
@@ -97,17 +100,23 @@
       $("#document").ready(function() {
         $("#warnings").hide();
         $("#formatted-json").hide();
+        $("#output-json-url").hide();
+        if ( $("#input-json").val().length > 0) {
+          $("#validate-json").trigger('click');
+        }
       });
 
       $("#clear-json-url").click(function() {
         $("#input-json-url").val('');
         $("#warnings").hide();
         $("#formatted-json").hide();
+        $("#output-json-url").hide();
       });
       $("#clear-json").click(function() {
         $("#input-json").val('');
         $("#warnings").hide();
         $("#formatted-json").hide();
+        $("#output-json-url").hide();
       });
 
       $('#validate-json').click(function() {
@@ -115,6 +124,8 @@
         $.post('/validateJson', {
           'jsonString': value 
         }, function(data) {
+          $("#output-json-url").val(data.url);
+          $("#output-json-url").show();
           if (data.success) {
             $("#warnings").hide();
             $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));

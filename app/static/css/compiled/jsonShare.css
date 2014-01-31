@@ -20,7 +20,7 @@ body #right-panel {
 }
 body #right-panel #warnings,
 body #right-panel #formatted-json {
-  margin-top: 74px;
+  margin-top: 20px;
 }
 body #input-json {
   width: 500px;
