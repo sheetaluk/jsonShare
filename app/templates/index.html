@@ -48,13 +48,13 @@
         <div>
           <div class="radio">
             <label>
-              <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="getOption" checked>
+              <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="get" checked>
               Get
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="postOption">
+              <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="post">
               Post
             </label>
           </div>
@@ -66,10 +66,10 @@
           <input class="form-control" type="text" id="input-json-url">
         </div>
         <label>
-          Header string:
+          Authorization Header Value String:
         </label>
         <div>
-          <input class="form-control" type="text" id="input-json-headers">
+          <input class="form-control" type="text" id="input-json-header">
         </div>
         <div>
           <input class="button btn btn-success" type="button" id="validate-json-url" value="validate">
@@ -121,19 +121,47 @@
 
       $('#validate-json').click(function() {
         var value = $('#input-json').val();
-        $.post('/validateJson', {
-          'jsonString': value 
-        }, function(data) {
-          $("#output-json-url").val(data.url);
-          $("#output-json-url").show();
-          if (data.success) {
-            $("#warnings").hide();
-            $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
-            $("#formatted-json").show();
-          } else {
-            $("#warnings").html(data.message);
-            $("#warnings").show();
-            $("#formatted-json").hide();
+        if (value.trim().length > 0) {
+          $.post('/validateJson', {
+            'jsonString': value 
+          }, function(data) {
+            $("#output-json-url").val(data.url);
+            $("#output-json-url").show();
+            if (data.success) {
+              $("#warnings").hide();
+              $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
+              $("#formatted-json").show();
+            } else {
+              $("#warnings").html(data.message);
+              $("#warnings").show();
+              $("#formatted-json").hide();
+            }
+          }, "json");
+        }
+      });
+
+      $('#validate-json-url').click(function() {
+        var inputType =
+          $("input:radio[name=input-json-request-type]").val();
+        var inputUrl =
+          $("#input-json-url").val();
+        var inputHeadersArray = $("#input-json-header").val().split(",");
+        var inputHeaders = {};
+        for (var i=0; i< inputHeadersArray.length; i++) {
+          var tempArray = inputHeadersArray[i];
+          tempArray = tempArray.split(":");
+          inputHeaders[tempArray[0]] = tempArray[1];
+        }
+
+        $.ajax({
+          type: inputType,
+          url: inputUrl,
+          headers: inputHeaders,
+          complete:function(data){
+            $("#input-json").val(data.responseText);
+            if ( $("#input-json").val().length > 0) {
+              $("#validate-json").trigger('click');
+            }
           }
         }, "json");
       });
