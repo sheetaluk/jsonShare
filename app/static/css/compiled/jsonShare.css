@@ -22,8 +22,13 @@ body #right-panel #warnings,
 body #right-panel #formatted-json {
   margin-top: 20px;
 }
+body #right-panel #formatted-json {
+  overflow: scroll;
+  height: 400px;
+}
 body #input-json {
   width: 500px;
+  height: 400px;
   resize: none;
 }
 body #input-json-url,
