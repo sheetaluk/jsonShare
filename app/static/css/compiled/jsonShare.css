@@ -45,6 +45,31 @@ body #left-panel {
   width: 45%;
   float: left;
 }
+body #left-panel #json-inputs-tabs {
+  width: 100%;
+  font-size: 18px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #d2d0d0;
+  cursor: pointer;
+}
+body #left-panel #json-inputs-tabs .selected {
+  color: #99cc66;
+}
+body #left-panel #json-inputs-tabs #json-string-input-tab {
+  border-right: 1px solid #d2d0d0;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+body #left-panel #json-inputs-tabs #json-string-input-tab:hover {
+  color: #99cc66;
+}
+body #left-panel #json-inputs-tabs #json-url-input-tab {
+  padding-left: 28px;
+}
+body #left-panel #json-inputs-tabs #json-url-input-tab:hover {
+  color: #99cc66;
+}
 body #right-panel {
   margin-left: 20px;
   float: left;
@@ -56,14 +81,14 @@ body #right-panel #formatted-json {
 }
 body #right-panel #formatted-json {
   overflow: scroll;
-  height: 400px;
+  height: 450px;
   background-color: #ededed;
 }
 body #output-json-url {
   background-color: #ededed;
 }
 body #input-json {
-  height: 400px;
+  height: 323px;
   resize: none;
 }
 body .button {

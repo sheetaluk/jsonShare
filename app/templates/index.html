@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?e830a8801cae3889">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?d9f5fb3bc4d8bc3b">
     <link rel="shortcut icon" href="../static/images/favicon.ico?291a53e82bc35c86">
   </head>
   <body>
@@ -29,54 +29,60 @@
           Input
         </h3>
         <hr />
-        <h4>
-          JSON
-        </h4>
-        <label>
-          String:
-        </label>
-        <div>
-          <textarea class="form-control" rows="10" id="input-json">{{jsonString}}</textarea>
+        <div id="json-inputs-tabs">
+          <span id="json-string-input-tab">
+            JSON
+          </span>
+          <span id="json-url-input-tab">
+            HTTP Response
+          </span>
         </div>
-        <div class="pull-right">
-          <input class="button btn" type="button" id="clear-json" value="clear">
-          <input class="button btn btn-success" type="button" id="validate-json" value="validate">
-        </div>
-        <h4>
-          HTTP Response
-        </h4>
-        <label>
-          Type:
-        </label>
-        <div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="get" checked>
-              Get
-            </label>
+        <div id="json-string-input">
+          <label>
+            String:
+          </label>
+          <div>
+            <textarea class="form-control" rows="10" id="input-json">{{jsonString}}</textarea>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="post">
-              Post
-            </label>
+          <div class="pull-right">
+            <input class="button btn" type="button" id="clear-json" value="clear">
+            <input class="button btn btn-success" type="button" id="validate-json" value="validate">
           </div>
         </div>
-        <label>
-          URL:
-        </label>
-        <div>
-          <input class="form-control" type="text" id="input-json-url">
-        </div>
-        <label>
-          Headers ("key1":"value1", "key2":"value2"):
-        </label>
-        <div>
-          <input class="form-control" type="text" id="input-json-header">
-        </div>
-        <div class="pull-right">
-          <input class="button btn" type="button" id="clear-json-url" value="clear">
-          <input class="button btn btn-success" type="button" id="validate-json-url" value="validate">
+        <div id="json-url-input">
+          <label>
+            Type:
+          </label>
+          <div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="get" checked>
+                Get
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="post">
+                Post
+              </label>
+            </div>
+          </div>
+          <label>
+            URL:
+          </label>
+          <div>
+            <input class="form-control" type="text" id="input-json-url">
+          </div>
+          <label>
+            Headers ("key1":"value1", "key2":"value2"):
+          </label>
+          <div>
+            <input class="form-control" type="text" id="input-json-header">
+          </div>
+          <div class="pull-right">
+            <input class="button btn" type="button" id="clear-json-url" value="clear">
+            <input class="button btn btn-success" type="button" id="validate-json-url" value="validate">
+          </div>
         </div>
       </div>
       <div id="right-panel">
@@ -104,6 +110,9 @@
         $("#warnings").hide();
         $("#formatted-json").html('');
         $("#output-json-url").val('');
+        $("#json-string-input").hide();
+        $("#json-url-input").hide();
+        $("#json-string-input-tab").trigger('click');
         if ( $("#input-json").val().length > 0) {
           $("#validate-json").trigger('click');
         }
@@ -111,6 +120,20 @@
 
       $("#about").click(function() {
         window.open("http://github.com/sheetaluk/jsonShare");
+      });
+
+      $("#json-string-input-tab").click(function() {
+        $("#json-url-input-tab").removeClass('selected');
+        $(this).addClass('selected');
+        $("#json-url-input").hide();
+        $("#json-string-input").show();
+      });
+
+      $("#json-url-input-tab").click(function() {
+        $("#json-string-input-tab").removeClass('selected');
+        $(this).addClass('selected');
+        $("#json-string-input").hide();
+        $("#json-url-input").show();
       });
 
       $("#clear-json-url").click(function() {
