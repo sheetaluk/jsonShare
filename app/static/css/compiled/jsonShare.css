@@ -9,6 +9,16 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+body ul.nav-links {
+  margin-top: 15px;
+  margin-right: 80px;
+}
+body ul.nav-links li a {
+  color: white;
+}
+body hr {
+  border-top: 1px solid #d2d0d0;
+}
 body .navbar-inverse {
   background-color: #85bb23 !important;
   border-color: #7aac20 !important;
@@ -16,13 +26,6 @@ body .navbar-inverse {
 body .navbar-header {
   color: #FFFCCC;
   width: inherit;
-}
-body .navbar-header .nav-links ul {
-  margin-top: 15px;
-  margin-right: 80px;
-}
-body .navbar-header .nav-links ul li a {
-  color: white;
 }
 body .navbar-header .logo {
   display: block;
