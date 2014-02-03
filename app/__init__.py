@@ -1,8 +1,8 @@
 import os
 from flask import Flask
 
-UPLOAD_FOLDER = '/Users/sheetaluk/development/jsonShare/app/templates/'
-JSONS_PATH = 'http://127.0.0.1:5000/jsons/'
+UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__),'templates/')
+JSONS_PATH = 'http://safe-anchorage-4628.herokuapp.com/jsons/'
 
 app = Flask(__name__)
 app.config.from_object('config')

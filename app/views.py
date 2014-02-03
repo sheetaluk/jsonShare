@@ -15,9 +15,6 @@ def validateJson():
     htmlString = str(render_template("index.html", jsonString=request.form['jsonString']))
     filename = ''.join(random.choice(string.ascii_uppercase) for i in range(12))
     filename = filename+".html"
-    print("******sheetal Umesh Kumar is trying something******")
-    print(app.config['UPLOAD_FOLDER'])
-    print("******sheetal Umesh Kumar is trying something*******")
     file = open(app.config['UPLOAD_FOLDER']+filename, "w+")
     file.write(htmlString)
     file.close()
