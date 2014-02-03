@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?82a1946dadb84665">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?fb37fe474e7c3046">
     <link rel="shortcut icon" href="../static/images/favicon.ico?291a53e82bc35c86">
   </head>
   <body>
@@ -100,7 +100,7 @@
       $("#document").ready(function() {
         $("#warnings").hide();
         $("#formatted-json").html('');
-        $("#output-json-url").hide();
+        $("#output-json-url").val('');
         if ( $("#input-json").val().length > 0) {
           $("#validate-json").trigger('click');
         }
@@ -110,15 +110,17 @@
         $("#input-json-url").val('');
         $("#warnings").hide();
         $("#formatted-json").html('');
-        $("#output-json-url").hide();
+        $("#output-json-url").val('');
         $("#input-json-header").val('');
         $("#input-json").val('');
+        $("#formatted-json").show();
       });
       $("#clear-json").click(function() {
         $("#input-json").val('');
         $("#warnings").hide();
         $("#formatted-json").html('');
-        $("#output-json-url").hide();
+        $("#formatted-json").show();
+        $("#output-json-url").val('');
       });
 
       $('#validate-json').click(function() {
@@ -128,15 +130,15 @@
             'jsonString': value 
           }, function(data) {
             $("#output-json-url").val(data.url);
-            $("#output-json-url").show();
             if (data.success) {
               $("#warnings").hide();
               $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
-//              $("#formatted-json").show();
+              $("#formatted-json").show();
             } else {
               $("#warnings").html(data.message);
               $("#warnings").show();
               $("#formatted-json").html('');
+              $("#formatted-json").hide();
             }
           }, "json");
         }
