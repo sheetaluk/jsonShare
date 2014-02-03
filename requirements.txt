@@ -3,7 +3,6 @@ Jinja2==2.7.2
 MarkupSafe==0.18
 WebOb==1.2.3
 Werkzeug==0.9.4
-closure-linter==2.6.0
 distribute==0.6.49
 gevent==0.13.8
 git-remote-helpers==0.1.0
