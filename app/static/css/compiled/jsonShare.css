@@ -5,6 +5,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+body .navbar-inverse {
+  background-color: #85bb23 !important;
+  border-color: #7aac20 !important;
+}
 body .navbar-header {
   color: #FFFCCC;
   width: inherit;
