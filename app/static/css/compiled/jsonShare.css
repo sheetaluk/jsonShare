@@ -39,11 +39,15 @@ body #right-panel {
 }
 body #right-panel #warnings,
 body #right-panel #formatted-json {
-  margin-top: 20px;
+  margin-top: 74px;
 }
 body #right-panel #formatted-json {
   overflow: scroll;
   height: 400px;
+  background-color: #ededed;
+}
+body #output-json-url {
+  background-color: #ededed;
 }
 body #input-json {
   height: 400px;

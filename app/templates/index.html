@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?271692db94b648c8">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?82a1946dadb84665">
     <link rel="shortcut icon" href="../static/images/favicon.ico?291a53e82bc35c86">
   </head>
   <body>
@@ -82,7 +82,7 @@
         </h3>
         <hr />
         <div> 
-          <input class="form-control" type="text" id="output-json-url">
+          <input class="form-control" type="text" id="output-json-url" readonly>
         </div>
         <div id="warnings" class="alert alert-danger">
         </div>
@@ -99,7 +99,7 @@
     <script>
       $("#document").ready(function() {
         $("#warnings").hide();
-        $("#formatted-json").hide();
+        $("#formatted-json").html('');
         $("#output-json-url").hide();
         if ( $("#input-json").val().length > 0) {
           $("#validate-json").trigger('click');
@@ -109,7 +109,7 @@
       $("#clear-json-url").click(function() {
         $("#input-json-url").val('');
         $("#warnings").hide();
-        $("#formatted-json").hide();
+        $("#formatted-json").html('');
         $("#output-json-url").hide();
         $("#input-json-header").val('');
         $("#input-json").val('');
@@ -117,7 +117,7 @@
       $("#clear-json").click(function() {
         $("#input-json").val('');
         $("#warnings").hide();
-        $("#formatted-json").hide();
+        $("#formatted-json").html('');
         $("#output-json-url").hide();
       });
 
@@ -132,11 +132,11 @@
             if (data.success) {
               $("#warnings").hide();
               $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
-              $("#formatted-json").show();
+//              $("#formatted-json").show();
             } else {
               $("#warnings").html(data.message);
               $("#warnings").show();
-              $("#formatted-json").hide();
+              $("#formatted-json").html('');
             }
           }, "json");
         }
