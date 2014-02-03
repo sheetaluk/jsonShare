@@ -20,8 +20,10 @@ def validateJson():
     file.close()
     try:
       data = json.loads(request.form['jsonString'])
+      print(data)
       return json.dumps({'success':'success', 'url':app.config['JSONS_PATH']+filename, 'message':str(data)})
-    except ValueError as ex:
+    except Exception as ex:
+      print(ex)
       return json.dumps({'error':'error', 'url':app.config['JSONS_PATH']+filename, 'message':str(ex)})
 
 @app.route('/jsons/<filename>')
