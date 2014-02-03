@@ -9,6 +9,17 @@ body .navbar-header {
   color: #FFFCCC;
   width: inherit;
 }
+body .navbar-header .logo {
+  display: block;
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-top: 10px;
+}
+body .navbar-header img {
+  max-width: 100%;
+  width: auto;
+}
 body #left-panel {
   width: 45%;
   float: left;
