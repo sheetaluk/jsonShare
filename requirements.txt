@@ -5,7 +5,6 @@ WebOb==1.2.3
 Werkzeug==0.9.4
 distribute==0.6.49
 gevent==0.13.8
-git-remote-helpers==0.1.0
 greenlet==0.4.0
 itsdangerous==0.23
 pyobjc==2.5.1
