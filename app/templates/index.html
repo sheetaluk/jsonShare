@@ -16,8 +16,8 @@
             <img src="../static/images/JSON_logo.png?1d1e8ac010811923" alt="Validate and Share Json">
           </span>
           <ul class="nav-links pull-right">
-            <li>
-              <a href="http://github.com/sheetaluk/jsonShare">About</a>
+            <li id="about">
+              <a>About</a>
             </li>
           </ul>
         </div>
@@ -107,6 +107,10 @@
         if ( $("#input-json").val().length > 0) {
           $("#validate-json").trigger('click');
         }
+      });
+
+      $("#about").click(function() {
+        window.open("http://github.com/sheetaluk/jsonShare");
       });
 
       $("#clear-json-url").click(function() {
