@@ -12,6 +12,7 @@ def index():
 @app.route('/validateJson', methods=['POST'])
 def validateJson():
   if request.method == "POST":
+print("sheetal Umesh Kumar is trying something")
     htmlString = str(render_template("index.html", jsonString=request.form['jsonString']))
     filename = ''.join(random.choice(string.ascii_uppercase) for i in range(12))
     filename = filename+".html"
