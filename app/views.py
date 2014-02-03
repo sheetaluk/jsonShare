@@ -18,6 +18,7 @@ def validateJson():
     file = open(app.config['UPLOAD_FOLDER']+filename, "w+")
     file.write(htmlString)
     file.close()
+    print("sheetal")
     try:
       data = json.loads(request.form['jsonString'])
       print(data)
