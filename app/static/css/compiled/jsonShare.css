@@ -17,6 +17,13 @@ body .navbar-header {
   color: #FFFCCC;
   width: inherit;
 }
+body .navbar-header .nav-links ul {
+  margin-top: 15px;
+  margin-right: 80px;
+}
+body .navbar-header .nav-links ul li a {
+  color: white;
+}
 body .navbar-header .logo {
   display: block;
   margin: 0;
