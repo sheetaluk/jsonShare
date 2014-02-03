@@ -13,6 +13,9 @@ body ul.nav-links {
   margin-top: 15px;
   margin-right: 80px;
 }
+body ul.nav-links li {
+  cursor: pointer;
+}
 body ul.nav-links li a {
   color: white;
 }
