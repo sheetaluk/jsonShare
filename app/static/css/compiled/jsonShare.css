@@ -1,4 +1,8 @@
+html {
+  background-color: #f5f5f5;
+}
 body {
+  background-color: #f5f5f5;
   width: 1300px;
   margin-top: 65px;
   margin-bottom: 100px;
@@ -42,13 +46,8 @@ body #right-panel #formatted-json {
   height: 400px;
 }
 body #input-json {
-  width: 500px;
   height: 400px;
   resize: none;
-}
-body #input-json-url,
-body #input-json-headers {
-  width: 500px;
 }
 body .button {
   margin-top: 15px;

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?0b67c122d0f109a1">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?271692db94b648c8">
     <link rel="shortcut icon" href="../static/images/favicon.ico?291a53e82bc35c86">
   </head>
   <body>
@@ -35,11 +35,10 @@
         <div>
           <textarea class="form-control" rows="10" id="input-json">{{jsonString}}</textarea>
         </div>
-        <div>
+        <div class="pull-right">
+          <input class="button btn" type="button" id="clear-json" value="clear">
           <input class="button btn btn-success" type="button" id="validate-json" value="validate">
-          <input class="button btn btn-warning" type="button" id="clear-json" value="clear">
         </div>
-        <hr />
         <h4>
           HTTP Response
         </h4>
@@ -67,14 +66,14 @@
           <input class="form-control" type="text" id="input-json-url">
         </div>
         <label>
-          Authorization Header Value String:
+          Headers ("key1":"value1", "key2":"value2"):
         </label>
         <div>
           <input class="form-control" type="text" id="input-json-header">
         </div>
-        <div>
+        <div class="pull-right">
+          <input class="button btn" type="button" id="clear-json-url" value="clear">
           <input class="button btn btn-success" type="button" id="validate-json-url" value="validate">
-          <input class="button btn btn-warning" type="button" id="clear-json-url" value="clear">
         </div>
       </div>
       <div id="right-panel">
