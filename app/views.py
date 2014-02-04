@@ -3,6 +3,15 @@ from app import app
 import json
 import string
 import random
+import os
+import uuid
+from base64 import urlsafe_b64encode, urlsafe_b64decode
+
+def uuid2slug():
+    return urlsafe_b64encode(uuid.uuid1().bytes).rstrip("==")
+
+def slug2uuid(slug):
+    return uuid.UUID(bytes=urlsafe_b64decode(slug + "=="))
 
 @app.route('/')
 @app.route('/index')
@@ -13,9 +22,9 @@ def index():
 def validateJson():
   if request.method == "POST":
     htmlString = str(render_template("index.html", jsonString=request.form['jsonString']))
-    filename = ''.join(random.choice(string.ascii_uppercase) for i in range(12))
+    filename = uuid2slug() 
     filename = filename+".html"
-    file = open(app.config['UPLOAD_FOLDER']+filename, "w+")
+    file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
     file.write(htmlString)
     file.close()
     try:
