@@ -1,8 +1,12 @@
 jsonShare
 =========
 
-Validate your json object and share the link with friends and family:
+Validate your json object and share the link with friends and family:<br />
 www.jsonshare.com
 
 Comments welcome:
-Sheetaluk@gmail.com
+* **Twitter**:
+[@sheetaluk](https://twitter.com/sheetaluk)
+
+* **Email**:
+sheetaluk@gmail.com
