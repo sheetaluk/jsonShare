@@ -19,6 +19,11 @@ body ul.nav-links li {
 body ul.nav-links li a {
   color: white;
 }
+body #example {
+  font-size: 12px;
+  font-weight: 400;
+  display: block;
+}
 body hr {
   border-top: 1px solid #d2d0d0;
 }
@@ -44,6 +49,10 @@ body .navbar-header img {
 body #left-panel {
   width: 45%;
   float: left;
+}
+body #left-panel .json-url-input-fields {
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 body #left-panel #json-inputs-tabs {
   width: 100%;
@@ -85,7 +94,7 @@ body #right-panel #formatted-json {
   background-color: #ededed;
 }
 body #output-json-url {
-  background-color: #ededed;
+  background-color: #ededcd;
 }
 body #input-json {
   height: 323px;

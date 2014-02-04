@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Json Share</title>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css?072e95329879934d">
-    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?d9f5fb3bc4d8bc3b">
+    <link rel="stylesheet" href="../static/css/compiled/jsonShare.css?d09d33afcf17b88c">
     <link rel="shortcut icon" href="../static/images/favicon.ico?291a53e82bc35c86">
   </head>
   <body>
@@ -34,7 +34,7 @@
             JSON
           </span>
           <span id="json-url-input-tab">
-            HTTP Response
+            HTTP
           </span>
         </div>
         <div id="json-string-input">
@@ -50,34 +50,43 @@
           </div>
         </div>
         <div id="json-url-input">
-          <label>
-            Type:
-          </label>
-          <div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="get" checked>
-                Get
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="post">
-                Post
-              </label>
+          <div class="json-url-input-fields">
+            <label>
+              Type:
+            </label>
+            <div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="input-json-request-type" id="input-json-get-request-type" value="get" checked>
+                  Get
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="input-json-request-type" id="input-json-post-request-type" value="post">
+                  Post
+                </label>
+              </div>
             </div>
           </div>
-          <label>
-            URL:
-          </label>
-          <div>
-            <input class="form-control" type="text" id="input-json-url">
+          <div class="json-url-input-fields">
+            <label>
+              URL:
+            </label>
+            <div>
+              <input class="form-control" type="text" id="input-json-url">
+            </div>
           </div>
-          <label>
-            Headers ("key1":"value1", "key2":"value2"):
-          </label>
-          <div>
-            <input class="form-control" type="text" id="input-json-header">
+          <div class="json-url-input-fields">
+            <label>
+              Headers
+            </label>
+            <label id="example">
+              Ex: key1:value1, key2:value2
+            </label>
+            <div>
+              <input class="form-control" type="text" id="input-json-header">
+            </div>
           </div>
           <div class="pull-right">
             <input class="button btn" type="button" id="clear-json-url" value="clear">
@@ -100,57 +109,55 @@
           </pre>
         </div>
       </div>
-      <div ng-view>
-      </div>
     </div>
-    <!-- script src="../static/js/minified/main.min.js?4ba97e1ae82b6594"></script -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
-      $("#document").ready(function() {
-        $("#warnings").hide();
-        $("#formatted-json").html('');
-        $("#output-json-url").val('');
-        $("#json-string-input").hide();
-        $("#json-url-input").hide();
-        $("#json-string-input-tab").trigger('click');
-        if ( $("#input-json").val().length > 0) {
-          $("#validate-json").trigger('click');
+      $(document).ready(function() {
+        $('#warnings').hide();
+        $('#formatted-json').html('');
+        $('#output-json-url').val('');
+        $('#json-string-input').hide();
+        $('#json-url-input').hide();
+        $('#json-string-input-tab').trigger('click');
+        if ( $('#input-json').val().length > 0) {
+          $('#validate-json').trigger('click');
         }
       });
 
-      $("#about").click(function() {
-        window.open("http://github.com/sheetaluk/jsonShare");
+      $('#about').click(function() {
+        window.open('http://github.com/sheetaluk/jsonShare');
       });
 
-      $("#json-string-input-tab").click(function() {
-        $("#json-url-input-tab").removeClass('selected');
+      $('#json-string-input-tab').click(function() {
+        $('#json-url-input-tab').removeClass('selected');
         $(this).addClass('selected');
-        $("#json-url-input").hide();
-        $("#json-string-input").show();
+        $('#json-url-input').hide();
+        $('#json-string-input').show();
       });
 
-      $("#json-url-input-tab").click(function() {
-        $("#json-string-input-tab").removeClass('selected');
+      $('#json-url-input-tab').click(function() {
+        $('#json-string-input-tab').removeClass('selected');
         $(this).addClass('selected');
-        $("#json-string-input").hide();
-        $("#json-url-input").show();
+        $('#json-string-input').hide();
+        $('#json-url-input').show();
       });
 
-      $("#clear-json-url").click(function() {
-        $("#input-json-url").val('');
-        $("#warnings").hide();
-        $("#formatted-json").html('');
-        $("#output-json-url").val('');
-        $("#input-json-header").val('');
-        $("#input-json").val('');
-        $("#formatted-json").show();
+      $('#clear-json-url').click(function() {
+        $('#input-json-url').val('');
+        $('#warnings').hide();
+        $('#formatted-json').html('');
+        $('#output-json-url').val('');
+        $('#input-json-header').val('');
+        $('#input-json').val('');
+        $('#formatted-json').show();
       });
-      $("#clear-json").click(function() {
-        $("#input-json").val('');
-        $("#warnings").hide();
-        $("#formatted-json").html('');
-        $("#formatted-json").show();
-        $("#output-json-url").val('');
+
+      $('#clear-json').click(function() {
+        $('#input-json').val('');
+        $('#warnings').hide();
+        $('#formatted-json').html('');
+        $('#formatted-json').show();
+        $('#output-json-url').val('');
       });
 
       $('#validate-json').click(function() {
@@ -159,31 +166,31 @@
           $.post('/validateJson', {
             'jsonString': value 
           }, function(data) {
-            $("#output-json-url").val(data.url);
+            $('#output-json-url').val(data.url);
             if (data.success) {
-              $("#warnings").hide();
-              $("#formatted-json").html(JSON.stringify(JSON.parse(value), null, 4));
-              $("#formatted-json").show();
+              $('#warnings').hide();
+              $('#formatted-json').html(JSON.stringify(JSON.parse(value), null, 2));
+              $('#formatted-json').show();
             } else {
-              $("#warnings").html(data.message);
-              $("#warnings").show();
-              $("#formatted-json").html('');
-              $("#formatted-json").hide();
+              $('#warnings').html(data.message);
+              $('#warnings').show();
+              $('#formatted-json').html('');
+              $('#formatted-json').hide();
             }
-          }, "json");
+          }, 'json');
         }
       });
 
       $('#validate-json-url').click(function() {
         var inputType =
-          $("input:radio[name=input-json-request-type]").val();
+          $('input:radio[name=input-json-request-type]').val();
         var inputUrl =
-          $("#input-json-url").val();
-        var inputHeadersArray = $("#input-json-header").val().split(",");
+          $('#input-json-url').val();
+        var inputHeadersArray = $('#input-json-header').val().split(',');
         var inputHeaders = {};
         for (var i=0; i< inputHeadersArray.length; i++) {
           var tempArray = inputHeadersArray[i];
-          tempArray = tempArray.split(":");
+          tempArray = tempArray.split(':');
           inputHeaders[tempArray[0]] = tempArray[1];
         }
 
@@ -192,12 +199,12 @@
           url: inputUrl,
           headers: inputHeaders,
           complete:function(data){
-            $("#input-json").val(data.responseText);
-            if ( $("#input-json").val().length > 0) {
-              $("#validate-json").trigger('click');
+            $('#input-json').val(data.responseText);
+            if ( $('#input-json').val().length > 0) {
+              $('#validate-json').trigger('click');
             }
           }
-        }, "json");
+        }, 'json');
       });
     </script>
   </body>
