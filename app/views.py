@@ -5,6 +5,7 @@ import string
 import random
 import os
 import uuid
+import sys
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 
 def uuid2slug():
@@ -12,6 +13,9 @@ def uuid2slug():
 
 def slug2uuid(slug):
     return uuid.UUID(bytes=urlsafe_b64decode(slug + "=="))
+import codecs
+
+app.debug = True
 
 @app.route('/')
 @app.route('/index')
@@ -21,15 +25,18 @@ def index():
 @app.route('/validateJson', methods=['POST'])
 def validateJson():
   if request.method == "POST":
-    htmlString = str(render_template("index.html", jsonString=request.form['jsonString']))
-    filename = uuid2slug() 
+    filename = uuid2slug()
     filename = filename+".html"
-    file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
-    file.write(htmlString)
-    file.close()
     try:
-      data = json.loads(request.form['jsonString'])
-      return json.dumps({'success':'success', 'url':app.config['JSONS_PATH']+filename, 'message':str(data)})
+      myreq = request.form['jsonString'].encode('utf-8')
+      myreq_payload =  json.loads(myreq, encoding="utf-8")
+      if not isinstance(myreq_payload, dict):
+        myreq_payload = json.loads(myreq_payload, encoding="utf-8")
+      htmlString = str(render_template("index.html", jsonString=json.dumps(str(myreq_payload))))
+      file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
+      file.write(htmlString)
+      file.close()
+      return json.dumps({'success':'success', 'url':app.config['JSONS_PATH']+filename, 'message':str(myreq_payload)})
     except Exception as ex:
       return json.dumps({'error':'error', 'url':app.config['JSONS_PATH']+filename, 'message':str(ex)})
 
