@@ -32,7 +32,7 @@ def validateJson():
       myreq_payload =  json.loads(myreq, encoding="utf-8")
       if not isinstance(myreq_payload, dict):
         myreq_payload = json.loads(myreq_payload, encoding="utf-8")
-      htmlString = str(render_template("index.html", jsonString=json.dumps(str(myreq_payload))))
+      htmlString = unicode(str(render_template("index.html", jsonString=myreq_payload)), "utf-8")
       file = open(os.path.join(app.config['UPLOAD_FOLDER'], filename), "w+")
       file.write(htmlString)
       file.close()
